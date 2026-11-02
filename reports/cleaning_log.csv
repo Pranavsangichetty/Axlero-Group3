@@ -1,0 +1,6 @@
+Step,Rows_Before,Rows_After,Rows_Removed
+Exact duplicate removal,1067371,1033036,34335
+Cancelled invoice exclusion,1033036,1013932,19104
+Positive quantity filter,1013932,1010539,3393
+Positive price filter,1010539,1007913,2626
+Valid invoice date filter,1007913,1007913,0

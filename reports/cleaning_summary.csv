@@ -1,0 +1,9 @@
+Metric,Value
+Original rows,1067371.0
+Cleaned transaction rows,1007913.0
+Customer transaction rows,779425.0
+Unique customers,5878.0
+Unique invoices,40077.0
+Unique products,4916.0
+Countries,43.0
+Total sales revenue,20476260.45

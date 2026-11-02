@@ -1,0 +1,15 @@
+Metric,Value
+Total Rows,1067371
+Total Columns,8
+Unique Invoices,53628
+Unique Customers,5942
+Unique Products,5305
+Unique Countries,43
+Exact Duplicates,34335
+Negative Quantities,22950
+Zero Quantities,0
+Negative Prices,5
+Zero Prices,6202
+Cancelled Invoice Rows,19494
+Missing Customer IDs,243007
+Missing Descriptions,4382
