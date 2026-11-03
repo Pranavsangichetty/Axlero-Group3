@@ -1,0 +1,5 @@
+Segment,Customer_Behaviour,Marketing_Recommendation,Primary_Objective
+Champions,"Recent purchases; highest frequency and monetary value","VIP rewards, exclusive offers, early access, referral campaigns","Retention and advocacy"
+Loyal High-Value,"Higher historical spending and frequency but less recent purchasing","Personalized win-back emails, loyalty reminders, relevant product offers","Reactivation"
+Recent Customers,"Recent purchasing but lower frequency and monetary value","Welcome campaigns, second-purchase incentives, product recommendations","Repeat purchases"
+At-Risk / Hibernating,"Longest recency; lowest frequency and monetary value","Re-engagement campaigns, feedback surveys, carefully targeted discounts","Customer reactivation"
