@@ -231,3 +231,60 @@ Planned activities:
 **Conclusion**
 
 Week 1 established the project's Python environment, repository structure, data-quality investigation, cleaning pipeline and exploratory analysis. The cleaned customer transaction dataset is ready for the next stage of customer-level analysis. The Tableau dashboard and predictive modeling will be completed in their respective project phases.
+
+## 10. Business Insights and Recommendations
+
+The EDA results provide the following business insights:
+
+### 10.1 Geographical Revenue Analysis
+
+- The United Kingdom generated approximately 17.41 million in recorded revenue.
+- Total recorded revenue was approximately 20.48 million.
+- The United Kingdom contributed approximately 85% of total recorded revenue.
+- EIRE and the Netherlands were the second and third highest revenue-generating countries.
+
+**Business recommendation:** The business should continue strengthening its UK customer base while exploring opportunities to grow sales in other countries. It should also monitor geographical revenue concentration.
+
+### 10.2 Customer Revenue Analysis
+
+The top customers by recorded revenue included:
+
+| Customer ID | Revenue |
+|---|---:|
+| 18102 | 580,987.04 |
+| 14646 | 528,602.52 |
+| 14156 | 313,437.62 |
+| 14911 | 291,420.81 |
+| 17450 | 244,784.25 |
+
+**Business recommendation:** High-revenue customers are potential candidates for loyalty programmes, personalized offers and retention campaigns. Customer segmentation can help identify different customer groups and design suitable marketing strategies.
+
+### 10.3 Monthly Revenue Analysis
+
+Monthly revenue varied during the dataset period. For example:
+
+| Month | Revenue |
+|---|---:|
+| December 2009 | 822,483.95 |
+| January 2010 | 651,155.11 |
+| February 2010 | 551,504.73 |
+| March 2010 | 830,915.26 |
+
+**Business recommendation:** The business can use monthly revenue trends to support sales planning, inventory management and promotional decisions. A complete monthly trend should be examined before drawing conclusions about seasonality or long-term growth.
+
+### 10.4 Overall Business Implications
+
+The EDA indicates that:
+
+1. Revenue is highly concentrated in the United Kingdom.
+2. Some customers contribute substantially more revenue than others.
+3. Monthly revenue fluctuates across the observation period.
+4. Customer-level purchasing behaviour should be studied further to identify valuable, regular and inactive customers.
+
+These findings support the next stages of the project:
+
+- **Customer Segmentation:** RFM analysis and K-Means clustering to group customers according to purchasing behaviour.
+- **Churn Prediction:** Classification models to identify customers who may stop purchasing.
+- **Dashboard Development:** Interactive reporting of revenue, customer segments and churn risk.
+
+**Note:** These findings describe historical transaction data. They do not independently establish customer churn, customer lifetime value or the causes of revenue changes.
