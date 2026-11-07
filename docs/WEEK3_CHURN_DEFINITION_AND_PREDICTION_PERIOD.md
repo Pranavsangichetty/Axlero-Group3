@@ -96,3 +96,20 @@ The following fields must be completed after the team discusses and approves the
 ## 8. Finalization rule
 
 This is a recommendation prepared for discussion, not a confirmed team decision. Update the status to **Approved** only after the relevant members confirm the windows and Divya verifies that the dataset supports a complete 90-day label period. Nivesh should then use this approved definition for churn-label implementation.
+
+
+## 9. Team Lead's Day 1 Conclusion
+
+As Team Leader, I have reviewed the Week 3 Day 1 responsibilities and documented a common proposal for defining purchase-inactivity-based churn. The proposed approach uses the previous 180 days to calculate customer features and the following 90 days to determine whether a customer made another valid purchase. This gives the team a measurable starting point for preparing churn labels and training the prediction models.
+
+The proposal also establishes an important integration rule: customer features and RFM values must be calculated using information available on or before the snapshot date, while transactions in the prediction window must be used only to determine the churn label. This is necessary to avoid data leakage and to keep the model evaluation meaningful.
+
+**Today's coordination outcome:**
+- A written churn definition and prediction-window proposal has been added to the shared project documentation.
+- The required confirmations from Divya (transaction date coverage), Lav (RFM reference-date compatibility) and Nivesh (label implementation feasibility) have been identified.
+- Sirisha and Raj have clear downstream context for planning churn visualizations and evaluation metrics.
+- The proposal and approval table provide one shared reference for the team.
+
+**Current decision status: Pending team confirmation.** The 180-day observation window and 90-day prediction horizon are recommendations, not yet an approved final team decision. The definition should be marked final only after the team reviews it and the cleaned dataset is confirmed to contain a complete 90-day follow-up period for the selected snapshot date(s).
+
+**Next step:** Collect the members' feedback, confirm dataset date coverage and RFM snapshot compatibility, then record the agreed definition here before Nivesh generates the churn labels and begins model training.
