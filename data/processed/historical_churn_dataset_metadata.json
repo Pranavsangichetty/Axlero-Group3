@@ -1,0 +1,21 @@
+{
+    "feature_window_start": "2011-01-02",
+    "feature_window_end": "2011-06-30",
+    "observation_window_start": "2011-07-01",
+    "observation_window_end": "2011-09-28",
+    "customer_cohort": "Customers with at least one purchase in the feature window",
+    "label_definition": {
+        "1": "No purchase during the 90-day observation window",
+        "0": "At least one purchase during the 90-day observation window"
+    },
+    "features": [
+        "Recency",
+        "Frequency",
+        "Monetary",
+        "Total_Quantity",
+        "Unique_Products",
+        "Average_Order_Value"
+    ],
+    "target": "Churn",
+    "warning": "Churn is a 90-day inactivity proxy, not proof of permanent churn. Features use transactions before 2011-07-01 only. Future_Orders_90d is retained for audit and must NOT be used as a model feature."
+}
