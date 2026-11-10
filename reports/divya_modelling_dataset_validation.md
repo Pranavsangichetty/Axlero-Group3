@@ -11,7 +11,6 @@
 2. `02_Modelling_and_Feature_Dataset.ipynb` — constructs a customer-level modelling dataset and feature-only dataset across multiple historical reference dates.
 3. `03_Data_Validation.ipynb` — independently recalculates the modelling rows/features/labels and checks dataset consistency and leakage.
 4. `04_Customer_ID_and_Reference_Date_Check.ipynb` — checks five-digit customer IDs, eligibility at each reference date, complete time windows and row-level dates.
-5. `Modelling_Base_Date_Coverage.ipynb` — supporting coverage analysis for the historical modelling reference dates.
 6. `RFM_Validation.ipynb` — supporting RFM output validation.
 
 These notebooks are preserved as contributed analytical evidence. They are not silently substituted for the current `src/` pipeline.
