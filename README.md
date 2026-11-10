@@ -127,7 +127,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-`requirements.txt` has no version numbers, so pip installs the newest releases. To install the exact versions used in testing, use `pip install -r requirements-tested.txt` instead (it pins every package in `requirements.txt` to the version used in testing).
+`requirements.txt` lists the required packages without pinned versions. Use a virtual environment and record the installed package versions when reproducing the project.
 
 ### 4. Add the dataset
 
@@ -401,6 +401,7 @@ Axlero-Group3/
 | [`docs/FINAL_PROJECT_EXECUTION_FLOW.md`](docs/FINAL_PROJECT_EXECUTION_FLOW.md) | End-to-end execution sequence and module handoff contracts |
 | [`docs/FINAL_REVIEW_PRESENTATION_OUTLINE.md`](docs/FINAL_REVIEW_PRESENTATION_OUTLINE.md) | Final project review slide structure and evidence checklist |
 | [`reports/divya_modelling_dataset_validation.md`](reports/divya_modelling_dataset_validation.md) | Divya's multi-snapshot modelling dataset and independent validation evidence |
+| [`reports/TEAM_INTEGRATION_SUMMARY_2026-11-10.md`](reports/TEAM_INTEGRATION_SUMMARY_2026-11-10.md) | Member contributions integrated into main, model design differences and remaining release gates |
 
 ---
 
