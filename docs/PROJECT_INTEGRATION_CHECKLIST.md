@@ -105,3 +105,25 @@ This section records the repository state inspected by the team lead. It is a re
 
 **Status: Integration in progress — PR #13 is not approved for merge.** The churn implementation and dashboard work are present on the PR branch, but branch freshness, team approval, dashboard-format alignment and reproducible test evidence must be resolved first.
 
+
+
+## 8. Integration update — 10 November 2026 (supersedes the earlier snapshot above)
+
+The main branch has since received a selective integration of the member deliverables. See `reports/TEAM_INTEGRATION_SUMMARY_2026-11-10.md` for file-by-file evidence and limitations.
+
+### Contributions now present on main
+
+- **Divya:** four data verification, modelling feature and validation notebooks under `notebooks/team_contributions/`; validation summary at `reports/divya_modelling_dataset_validation.md`.
+- **Lav:** supplemental `dashboard/app.py`, `src/predict_customers.py`, 10-customer sample scoring input/output and Week 3/4 QA reports.
+- **Nivesh:** the existing single-snapshot churn dataset/training/validation scripts, saved model and metadata are present on main.
+- **Sirisha:** the existing Power BI `.pbix` remains the requested dashboard artifact; the Streamlit dashboard is supplementary and does not replace it.
+- **Raj:** model evaluation, validation and QA report artifacts are present; clean-clone independent rerun is still required.
+- **Pranav:** README, integration checklist, execution flow, presentation outline and team integration summary updated.
+
+### Design decision still required
+
+Divya's multi-snapshot approach uses a 12-month feature lookback, four quarterly reference dates and 18 features. The currently trained model uses one historical cohort, a 180-day feature window and six features. Both use a 90-day inactivity label, but the datasets are not interchangeable. Keep them separate until a controlled out-of-time comparison and explicit team decision are recorded.
+
+### Current release decision
+
+**Core churn model, scoring workflow, supplementary Streamlit dashboard and Divya's validation notebooks are now present on main.** The project remains in progress because the final churn-design choice, clean-clone independent QA and Power BI churn page/final QA remain outstanding. Do not mark the Power BI dashboard or final release complete yet.
