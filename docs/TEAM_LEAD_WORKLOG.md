@@ -39,7 +39,7 @@
 
 | Date | Decision | Reason | Affected modules | Follow-up |
 |---|---|---|---|---|
-| YYYY-MM-DD |  |  |  |  |
+| 2026-11-10 | PR #13 / Lav-Kumar | Churn, prediction and dashboard deliverables | Changes requested; branch is 38 commits behind main, dashboard scope and evidence need resolution | Not merged |
 
 ## Daily work log
 
