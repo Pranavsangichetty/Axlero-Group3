@@ -61,5 +61,4 @@ It is not a full-population prediction output.
 ## 8. QA Conclusion
 All eight manual dashboard tests passed.
 The dashboard's principal functionality was verified.
-The Week 4 dashboard testing deliverable is complete
-in the Lav-Kumar branch.
+This QA report was contributed from the Lav-Kumar branch and copied into main. Its 8/8 result is preserved as reported evidence; rerun the dashboard from a clean clone before final sign-off. This Streamlit dashboard is supplementary and does not replace the required Power BI `.pbix`.
