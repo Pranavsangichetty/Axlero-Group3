@@ -391,7 +391,10 @@ Axlero-Group3/
 | [`reports/dashboard_guide.md`](reports/dashboard_guide.md) | Dashboard contents, usage, refresh steps and reference KPI values |
 | [`reports/testing_evidence.md`](reports/testing_evidence.md) | Test commands, results and evidence files |
 | [`reports/qa_checklist.md`](reports/qa_checklist.md) | QA checklist and list of open findings |
-| [`docs/`](docs/) | Architecture, module contracts, branch review and clean-run test plan |
+| [`docs/`](docs/) | Architecture, module contracts, integration checklist, execution flow, review presentation outline and work logs |
+| [`reports/FINAL_PROJECT_STATUS_2026-11-10.md`](reports/FINAL_PROJECT_STATUS_2026-11-10.md) | Evidence-based team-lead status, PR review findings, release gates and next actions |
+| [`docs/FINAL_PROJECT_EXECUTION_FLOW.md`](docs/FINAL_PROJECT_EXECUTION_FLOW.md) | End-to-end execution sequence and module handoff contracts |
+| [`docs/FINAL_REVIEW_PRESENTATION_OUTLINE.md`](docs/FINAL_REVIEW_PRESENTATION_OUTLINE.md) | Final project review slide structure and evidence checklist |
 
 ---
 
