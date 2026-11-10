@@ -16,7 +16,7 @@ The project uses data analytics and machine learning techniques to support custo
 
 ## Project Status at a Glance
 
-Status was checked by re-running the code on 2026-11-10 (see [`reports/testing_evidence.md`](reports/testing_evidence.md)).
+Status was checked by re-running the code on 2026-11-10 (see [`reports/testing_evidence.md`](https://github.com/Pranavsangichetty/Axlero-Group3/blob/main/testing_evidence.md)).
 
 | Area | Status | Evidence |
 |---|---|---|
@@ -424,7 +424,7 @@ Axlero-Group3/
 
 Repository: https://github.com/Pranavsangichetty/Axlero-Group3
 
-Working branch: `Lav-Kumar`
+Working branch: `Lav-Kumar, Rishuraj`
 
 ---
 
