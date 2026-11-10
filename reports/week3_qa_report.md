@@ -78,5 +78,4 @@ have not been validated as business decision thresholds.
 
 ## 9. QA Conclusion
 All 28 independent churn-model validation checks passed.
-The Week 3 churn prediction development and validation
-deliverables are complete in the Lav-Kumar branch.
+This QA report was contributed from the Lav-Kumar branch and copied into main. Its 28/28 result is preserved as reported evidence; rerun `python src/validate_churn_model.py` from a clean clone before final sign-off.
