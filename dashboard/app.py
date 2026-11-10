@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 import pandas as pd
 import plotly.express as px
@@ -11,6 +12,7 @@ SEGMENTS_FILE = ROOT / "data/processed/customer_rfm_features.csv"
 SEGMENT_PROFILE_FILE = ROOT / "reports/business_insights_metrics.csv"
 CHURN_FILE = ROOT / "data/processed/historical_churn_dataset.csv"
 PREDICTIONS_FILE = ROOT / "reports/customer_churn_predictions.csv"
+MODEL_METADATA_FILE = ROOT / "models/model_metadata.json"
 
 st.set_page_config(
     page_title="Retail Customer Analytics",
@@ -30,6 +32,13 @@ segments = load_csv(SEGMENTS_FILE)
 profile = load_csv(SEGMENT_PROFILE_FILE)
 churn = load_csv(CHURN_FILE)
 predictions = load_csv(PREDICTIONS_FILE)
+
+if MODEL_METADATA_FILE.exists():
+    model_metadata = json.loads(MODEL_METADATA_FILE.read_text(encoding="utf-8"))
+    test_metrics = model_metadata.get("test_metrics", {})
+else:
+    model_metadata = {}
+    test_metrics = {}
 
 
 def money(value):
@@ -247,20 +256,31 @@ with tabs[2]:
             "The held-out test metrics are reported below."
         )
 
-        metric_data = pd.DataFrame({
-            "Metric": ["Accuracy", "Precision", "Recall", "F1-score", "ROC-AUC"],
-            "Score": [0.6807, 0.6529, 0.7224, 0.6859, 0.7308],
-        })
+        metric_labels = [
+            ("Accuracy", "Accuracy"),
+            ("Precision", "Precision"),
+            ("Recall", "Recall"),
+            ("F1-score", "F1_Score"),
+            ("ROC-AUC", "ROC_AUC"),
+        ]
+        metric_data = pd.DataFrame([
+            {"Metric": label, "Score": test_metrics[key]}
+            for label, key in metric_labels
+            if key in test_metrics
+        ])
 
-        fig = px.bar(
-            metric_data,
-            x="Metric",
-            y="Score",
-            title="Selected Model – Test Metrics",
-            text_auto=".3f",
-            range_y=[0, 1],
-        )
-        st.plotly_chart(fig, use_container_width=True)
+        if metric_data.empty:
+            st.warning("Saved model test metrics are unavailable. Run the churn training workflow.")
+        else:
+            fig = px.bar(
+                metric_data,
+                x="Metric",
+                y="Score",
+                title="Selected Model – Test Metrics",
+                text_auto=".3f",
+                range_y=[0, 1],
+            )
+            st.plotly_chart(fig, use_container_width=True)
 
         st.caption(
             "Metrics are from the saved model evaluation report, not calculated "
