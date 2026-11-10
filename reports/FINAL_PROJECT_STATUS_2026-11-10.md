@@ -87,7 +87,7 @@ This addendum supersedes the earlier snapshot in this report.
 ## Selective member integration into main
 
 The main branch now contains:
-- Divya's four data verification, modelling dataset and validation notebooks in `notebooks/team_contributions/`.
+- Divya's six data verification, modelling dataset and validation notebooks in `notebooks/team_contributions/`.
 - Lav's Streamlit dashboard, customer scoring script, sample scoring input/output and Week 3/4 QA reports.
 - The single-snapshot churn dataset builder, model training script, validation script, saved model, model metadata and evaluation outputs.
 - The existing Power BI `.pbix` remains in the repository as the requested dashboard artifact.
