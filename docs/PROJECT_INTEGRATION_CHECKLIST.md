@@ -113,7 +113,7 @@ The main branch has since received a selective integration of the member deliver
 
 ### Contributions now present on main
 
-- **Divya:** four data verification, modelling feature and validation notebooks under `notebooks/team_contributions/`; validation summary at `reports/divya_modelling_dataset_validation.md`.
+- **Divya:** six data verification, modelling feature and validation notebooks under `notebooks/team_contributions/`; validation summary at `reports/divya_modelling_dataset_validation.md`.
 - **Lav:** supplemental `dashboard/app.py`, `src/predict_customers.py`, 10-customer sample scoring input/output and Week 3/4 QA reports.
 - **Nivesh:** the existing single-snapshot churn dataset/training/validation scripts, saved model and metadata are present on main.
 - **Sirisha:** the existing Power BI `.pbix` remains the requested dashboard artifact; the Streamlit dashboard is supplementary and does not replace it.
