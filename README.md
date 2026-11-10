@@ -10,21 +10,22 @@ The project uses data analytics and machine learning techniques to support custo
 **Organization:** Axlero – Innovating Solutions  
 **Project:** Customer Segmentation and Churn Prediction  
 **Dataset:** Online Retail II  
-**Technology:** Python, Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, K-Means, Power BI
+**Technology:** Python, Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, K-Means, Power BI, Streamlit, Plotly
 
 ---
 
 ## Project Status at a Glance
 
-Status was checked by re-running the code on 2026-11-10 (see [`reports/testing_evidence.md`](https://github.com/Pranavsangichetty/Axlero-Group3/blob/main/testing_evidence.md)).
+Repository status reflects the files currently committed to `main` and the saved validation reports. Re-run the commands below from a clean clone before final submission.
 
 | Area | Status | Evidence |
 |---|---|---|
 | Data audit, cleaning, EDA (Week 1) | Complete and reproducible | All outputs regenerate identically from the raw CSV |
 | RFM and K-Means segmentation (Week 2) | Complete and reproducible | 64 automated checks pass (`src/verify_reported_metrics.py`) |
-| Churn prediction (Week 3) | **Not in this repository** | No churn code, model file, predictions or metrics found |
-| Power BI dashboard (Week 4) | Partial | 2 pages (sales overview, RFM segments); no churn page |
-| Final documentation | Complete for delivered work | `reports/final_project_report.md` |
+| Churn prediction (Week 3) | Implemented for one historical cohort | `src/churn_dataset.py`, `src/churn_prediction.py`, saved model, metadata and evaluation report |
+| Streamlit analytics dashboard | Added as a supplementary interactive dashboard | `dashboard/app.py`; includes segmentation, historical churn and sample customer details |
+| Power BI dashboard (Week 4) | Partial | `Customer_Segmentation_Dashboard.pbix` has sales and RFM pages; churn page remains outstanding |
+| Data engineering validation extension | Integrated as contributed notebooks; alternative multi-snapshot design | `notebooks/team_contributions/` and `reports/divya_modelling_dataset_validation.md` |
 
 Open issues are listed in [`reports/qa_checklist.md`](reports/qa_checklist.md).
 
@@ -85,7 +86,7 @@ The full column-by-column description of every file is in [`reports/data_diction
 |---|---|
 | Programming | Python 3.9 or newer (tested with 3.12.3) |
 | Data Manipulation | Pandas, NumPy |
-| Data Visualization | Matplotlib, Seaborn, Power BI Desktop |
+| Data Visualization | Matplotlib, Seaborn, Plotly, Streamlit, Power BI Desktop |
 | Machine Learning | Scikit-learn |
 | Clustering | K-Means |
 | Database (optional notebook route) | PostgreSQL, SQLAlchemy, psycopg2 |
@@ -143,6 +144,9 @@ python src/clean_data.py                # Week 1: cleaning -> data/interim and d
 python src/eda.py                       # Week 1: six charts in reports/figures/
 python src/rfm_analysis.py              # Week 2: RFM, K-Means, segments
 python src/features.py                  # Week 2: integrated customer_rfm_features.csv
+python src/churn_dataset.py              # Week 3: historical customer cohort and churn labels
+python src/churn_prediction.py           # Week 3: train Logistic Regression and Random Forest
+python src/validate_churn_model.py       # Week 3: verify saved model and reported metrics
 ```
 
 Order matters: each step uses the files created by the step before. Together they take about 30 seconds.
@@ -166,18 +170,18 @@ python src/verify_reported_metrics.py
 
 This re-computes the key numbers and compares them with the reports and with this README. It prints every check that is not a plain PASS and saves all results to `reports/qa_evidence/metric_verification.csv`. The last run gave PASS = 64, FAIL = 2, WARN = 0, INFO = 2, BLOCKED = 2. The two FAIL results are real open issues (the 5% data-loss target and the missing churn dashboard page), not script errors. The script exits with code 1 while a FAIL remains.
 
-### 7. Churn model verification (when delivered)
+### 7. Customer scoring and supplementary Streamlit dashboard
 
-When the churn model is delivered, check its reported metrics against its saved predictions:
+The saved model can score the sample customer feature file:
 
 ```bash
-python src/modeling/verify_churn_metrics.py \
-    --predictions data/processed/churn_predictions.csv \
-    --reported reports/churn_metrics.csv
-python src/modeling/verify_churn_metrics.py --self-test    # tool test on synthetic data
+python src/predict_customers.py \
+    --input data/processed/sample_customer_scoring_input.csv \
+    --output reports/customer_churn_predictions.csv
+streamlit run dashboard/app.py
 ```
 
-The expected file formats are described at the top of `src/modeling/verify_churn_metrics.py`.
+The committed prediction CSV is a 10-customer demonstration only. It is not a full-customer scoring output. The dashboard leaves missing scores blank; do not interpret them as zero risk. The Streamlit dashboard is supplementary and does not replace the required Power BI `.pbix` deliverable.
 
 ### Optional: PostgreSQL notebook route
 
@@ -283,26 +287,25 @@ These recommendations are interpretations of the segment profiles, not model gua
 
 ### Week 3 – Customer Churn Prediction
 
-**Status: Not delivered in this repository**
+**Status: Implemented for one historical cohort; final team sign-off and independent rerun remain required.**
 
-`models/` and `src/modeling/` contain no model, code, predictions or metrics. The churn definition (no purchase in the next 90 days after a 180-day observation window) is still marked *pending team confirmation* in `docs/WEEK3_CHURN_DEFINITION_AND_PREDICTION_PERIOD.md`. The Project Requirements Document example uses 30 or 60 days, so the team must confirm the final horizon.
+The integrated workflow uses a 180-day pre-cutoff feature window (2 January–30 June 2011) and a 90-day future inactivity label window (1 July–28 September 2011). The cohort contains 2,724 customers: 1,315 labelled churned and 1,409 active. Churn is an inactivity proxy, not proof of permanent customer loss.
 
-Planned activities:
+- `src/churn_dataset.py` creates the historical customer-level dataset.
+- `src/churn_prediction.py` trains Logistic Regression and Random Forest, selects using training cross-validation ROC-AUC and saves the selected pipeline and reports.
+- `src/validate_churn_model.py` independently checks the saved model and metrics.
+- `src/predict_customers.py` scores new customer-level feature rows.
 
-- Define a leakage-safe customer churn target.
-- Prepare features for churn prediction at a historical cutoff date.
-- Handle class imbalance where necessary.
-- Train Logistic Regression and Random Forest models.
-- Evaluate models using Precision, Recall, F1-score, and ROC-AUC (target: ROC-AUC of at least 0.75).
-- Save the selected model and evaluation results.
+**Saved test results reported by the model artifacts:** Logistic Regression — Accuracy 0.6807, Precision 0.6529, Recall 0.7224, F1-score 0.6859, ROC-AUC 0.7308 on 545 held-out customers. Training cross-validation ROC-AUC was 0.7639. The test ROC-AUC is below the project target of 0.75; this is a documented gap, not a passed target.
 
 ### Week 4 – Dashboard and Final Documentation
 
-**Status: Partial**
+**Status: Partially integrated.**
 
-- `Customer_Segmentation_Dashboard.pbix` has 2 pages: `Page 1` (sales overview) and `RFM & Customer Segments`.
-- No churn page, KPI cards or slicers exist yet, although `reports/Dashboard_Documentation.docx` plans them.
-- Final report, metric documentation, data dictionary, cleaning documentation, dashboard guide and QA checklist are in `reports/`.
+- `dashboard/app.py` provides a supplementary Streamlit dashboard with executive overview, four RFM segments, historical churn distribution/model metrics and customer details.
+- The Streamlit dashboard uses the saved 10-customer prediction demonstration; only those customers have scores.
+- `Customer_Segmentation_Dashboard.pbix` remains the requested Power BI deliverable and currently has two documented pages (sales overview and RFM segments). Its churn page and final Power BI refresh/interaction QA remain outstanding.
+- Week 3 and Week 4 QA reports are in `reports/week3_qa_report.md` and `reports/week4_qa_report.md`. Their recorded checks are contributor-reported and must be rerun independently before final sign-off.
 
 ---
 
@@ -337,6 +340,7 @@ Axlero-Group3/
 │       └── customer_rfm_features_metadata.json
 │
 ├── notebooks/
+│   └── team_contributions/       (Divya's data verification and modelling validation notebooks)
 │
 ├── src/
 │   ├── dataset.py
@@ -350,8 +354,9 @@ Axlero-Group3/
 │   └── modeling/
 │       └── verify_churn_metrics.py
 │
-├── models/                      (empty: no churn model delivered yet)
-├── dashboard/                   (empty; the .pbix is in the repository root)
+├── models/                      (saved churn model and metadata)
+├── dashboard/
+│   └── app.py                    (supplementary Streamlit dashboard)
 │
 ├── reports/
 │   ├── figures/
@@ -395,6 +400,7 @@ Axlero-Group3/
 | [`reports/FINAL_PROJECT_STATUS_2026-11-10.md`](reports/FINAL_PROJECT_STATUS_2026-11-10.md) | Evidence-based team-lead status, PR review findings, release gates and next actions |
 | [`docs/FINAL_PROJECT_EXECUTION_FLOW.md`](docs/FINAL_PROJECT_EXECUTION_FLOW.md) | End-to-end execution sequence and module handoff contracts |
 | [`docs/FINAL_REVIEW_PRESENTATION_OUTLINE.md`](docs/FINAL_REVIEW_PRESENTATION_OUTLINE.md) | Final project review slide structure and evidence checklist |
+| [`reports/divya_modelling_dataset_validation.md`](reports/divya_modelling_dataset_validation.md) | Divya's multi-snapshot modelling dataset and independent validation evidence |
 
 ---
 
@@ -409,7 +415,9 @@ Axlero-Group3/
 - **RFM is a full-history snapshot.** It is for descriptive segmentation only and must not be used to train a churn model (data leakage). Recompute features at a historical cutoff for churn modelling.
 - **Two pipelines give different numbers.** The `src/` scripts (5,878 customers) and the PostgreSQL notebook (5,852 customers) apply different cleaning rules and name the clusters differently. The dashboard and this README use the `src/` results.
 - Monetary values use the dataset's recorded price units; the currency has not been independently verified.
-- Churn prediction is not delivered, and the dashboard has no churn view.
+- The primary churn model is based on one historical cohort; its held-out ROC-AUC (0.7308) is below the stated 0.75 target, and temporal generalization remains unverified.
+- Divya's alternative multi-snapshot dataset uses a 12-month feature lookback and four reference dates, unlike the current single-snapshot 180-day model. The two designs must not be mixed; a controlled out-of-time comparison is still required.
+- The Power BI dashboard remains incomplete because its churn page and final QA are outstanding. The Streamlit dashboard is supplementary.
 
 ---
 
