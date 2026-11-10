@@ -1,0 +1,36 @@
+{
+    "project": "Retail & E-commerce Customer Churn Prediction",
+    "selected_model": "Logistic Regression",
+    "selection_metric": "Mean 3-fold training cross-validation ROC-AUC",
+    "cross_validation_roc_auc": 0.7638764109106898,
+    "best_parameters": {
+        "classifier__C": 0.1,
+        "classifier__class_weight": null
+    },
+    "features": [
+        "Recency",
+        "Frequency",
+        "Monetary",
+        "Total_Quantity",
+        "Unique_Products",
+        "Average_Order_Value"
+    ],
+    "target": "Churn",
+    "excluded_columns": [
+        "CustomerID",
+        "Future_Orders_90d"
+    ],
+    "random_state": 42,
+    "test_size": 0.2,
+    "training_customers": 2179,
+    "test_customers": 545,
+    "test_metrics": {
+        "Accuracy": 0.6807339449541284,
+        "Precision": 0.6529209621993127,
+        "Recall": 0.7224334600760456,
+        "F1_Score": 0.6859205776173285,
+        "ROC_AUC": 0.7308065690478116
+    },
+    "target_definition": "No purchase during the 90-day observation window",
+    "warning": "Churn is a 90-day inactivity proxy, not permanent customer loss. Evaluation is based on one historical time cohort and does not guarantee future performance."
+}
