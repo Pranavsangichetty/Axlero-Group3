@@ -79,3 +79,45 @@ The target is purchase-inactivity-based proxy churn, not proof of permanent cust
 ## Release decision
 
 **Do not mark the project fully integrated or ready for final submission yet.** Week 1 and Week 2 are documented complete on `main`; Week 3 and Week 4 have substantial work on PR #13 but remain pending review, branch synchronization, scope confirmation and evidence-based acceptance.
+
+# Integration update — 10 November 2026
+
+This addendum supersedes the earlier snapshot in this report.
+
+## Selective member integration into main
+
+The main branch now contains:
+- Divya's four data verification, modelling dataset and validation notebooks in `notebooks/team_contributions/`.
+- Lav's Streamlit dashboard, customer scoring script, sample scoring input/output and Week 3/4 QA reports.
+- The single-snapshot churn dataset builder, model training script, validation script, saved model, model metadata and evaluation outputs.
+- The existing Power BI `.pbix` remains in the repository as the requested dashboard artifact.
+
+The branches were not merged wholesale because several member branches were materially behind main. Individual files and reports were copied selectively to avoid overwriting newer shared work.
+
+## Updated status
+
+| Workstream | Current main status | Remaining action |
+|---|---|---|
+| Week 1 cleaning and EDA | Existing main pipeline and reports | Re-run clean clone and retain current evidence |
+| Week 2 RFM segmentation | Existing main data and four segment profiles | Reconcile RFM snapshot with churn cohort |
+| Divya data engineering | Four notebooks integrated; saved notebook evidence reports 83/83 and 42/42 validation checks | Re-run notebooks from clean setup; compare alternative modelling design |
+| Nivesh churn model | Single-cohort dataset, Logistic Regression/Random Forest training, validation code, saved model and metadata present | Team approval and independent rerun |
+| Lav customer scoring | Scoring script and 10-row sample input/output integrated | Generate full eligible-population scoring only after approved feature pipeline |
+| Lav dashboard | Streamlit app integrated and model metrics read from metadata | Run locally and test clean clone |
+| Sirisha Power BI | Existing two-page PBIX remains | Add churn page and verify interactions/refresh |
+| Raj QA/documentation | Churn evaluation and Week 3/4 QA reports present | Independently reproduce metrics and tests |
+| Pranav integration | README, checklist, execution flow, review outline and integration summary updated | Confirm final modelling design and release readiness |
+
+## Model design reconciliation
+
+The current saved model is based on one historical cohort, 180 days of pre-cutoff features and a 90-day future inactivity label. Saved held-out test results are Accuracy 0.6807, Precision 0.6529, Recall 0.7224, F1-score 0.6859 and ROC-AUC 0.7308. ROC-AUC is below the stated 0.75 target.
+
+Divya's notebook study constructs 16,495 customer-reference-date rows across four reference dates, with 12-month feature lookback and 18 features. It reports 83/83 checks and 42/42 checks passing in saved notebook outputs. This is an alternative multi-snapshot dataset design, not the dataset used to train the currently saved model. No metrics from one design should be attributed to the other.
+
+## Dashboard decision
+
+The Streamlit dashboard is an additional interactive view and includes segmentation, historical churn and a sample customer table. It does not replace the assigned Power BI deliverable. The Power BI file still needs a churn page and final QA.
+
+## Release decision
+
+**Core Week 3 code and supporting member artifacts are now present on main, but final release is not yet approved.** Required next steps are team confirmation of the modelling design, clean-clone reruns by Nivesh/Raj, notebook reruns by Divya, Power BI completion by Sirisha and final integration sign-off by Pranav.
