@@ -1,37 +1,33 @@
 # Retail & E-commerce Customer Segmentation and Churn Prediction
 
-## Project Overview
+## 1. Project Overview
 
-This project focuses on analyzing retail and e-commerce transaction data to understand customer purchasing behaviour, identify valuable customer groups, and develop a customer churn prediction system.
+This project analyzes retail transaction data to understand customer purchasing behaviour, identify valuable customer segments, and predict customer churn.
 
-The project uses data analytics and machine learning techniques to support customer retention, targeted marketing campaigns, and data-driven business decisions.
+The project uses data cleaning, exploratory data analysis (EDA), RFM analysis, K-Means clustering, machine learning, and an interactive dashboard to support customer retention and data-driven business decisions.
 
 **Project Domain:** Retail & E-commerce  
 **Organization:** Axlero – Innovating Solutions  
 **Project:** Customer Segmentation and Churn Prediction  
 **Dataset:** Online Retail II  
-**Technology:** Python, Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, K-Means
+**Working Branch:** `Lav-Kumar`
 
----
+## 2. Project Objectives
 
-## Project Objectives
-
-- Analyze customer purchasing behaviour using transaction data.
+- Analyze customer purchasing behaviour.
 - Identify and handle missing values, duplicates, cancellations, and invalid transactions.
-- Perform Exploratory Data Analysis (EDA).
+- Perform exploratory data analysis.
 - Calculate Recency, Frequency, and Monetary (RFM) metrics.
 - Apply K-Means clustering to identify customer segments.
-- Develop customer churn prediction models.
-- Create an interactive business dashboard.
-- Provide actionable marketing and customer retention recommendations.
+- Develop and evaluate customer churn prediction models.
+- Build an interactive business dashboard.
+- Generate customer retention recommendations.
 
----
+## 3. Dataset Description
 
-## Dataset Description
+The project uses the Online Retail II transaction dataset.
 
-The project uses the Online Retail II dataset.
-
-The original dataset contains:
+The original dataset contains 1,067,371 records and eight columns.
 
 | Attribute | Description |
 |---|---|
@@ -44,37 +40,30 @@ The original dataset contains:
 | Customer ID | Customer identifier |
 | Country | Customer's country |
 
-The dataset originally contained **1,067,371 transaction records** and 8 columns.
-
-A `TotalPrice` feature was created using:
+A `TotalPrice` feature was created:
 
 `TotalPrice = Quantity × Price`
 
----
-
-## Technology Stack
+## 4. Technology Stack
 
 | Category | Technologies |
 |---|---|
 | Programming | Python |
-| Data Manipulation | Pandas, NumPy |
-| Data Visualization | Matplotlib, Seaborn |
+| Data Processing | Pandas, NumPy |
+| Visualization | Matplotlib, Seaborn, Plotly |
 | Machine Learning | Scikit-learn |
 | Clustering | K-Means |
-| Data Processing | Python scripts |
+| Dashboard | Streamlit |
+| Model Storage | Joblib / Pickle |
 | Version Control | Git and GitHub |
-| Development Environment | Jupyter Notebook, VS Code |
 
----
+## 5. Project Progress and Deliverables
 
-## Project Progress
-
-### Week 1 – Data Understanding, Cleaning and EDA
+### Week 1 – Data Cleaning and Exploratory Data Analysis
 
 **Status: Completed**
 
-Activities performed:
-
+Activities:
 1. Dataset exploration and understanding.
 2. Data quality audit.
 3. Missing-value analysis.
@@ -83,9 +72,9 @@ Activities performed:
 6. Removal of invalid quantity and price records.
 7. Creation of the `TotalPrice` feature.
 8. Customer-level transaction dataset preparation.
-9. Exploratory Data Analysis.
+9. Exploratory data analysis and visualization.
 
-**Cleaning results:**
+#### Data cleaning results
 
 | Description | Records |
 |---|---:|
@@ -97,30 +86,50 @@ Activities performed:
 | Customer-linked transactions | 779,425 |
 | Identified customers | 5,878 |
 
-**EDA visualizations generated:**
+Approximately 5.57% of original records were removed during the documented cleaning pipeline.
 
-- Monthly orders analysis.
-- Monthly revenue analysis.
+#### EDA summary
+
+| Metric | Result |
+|---|---:|
+| Cleaned transactions | 1,007,913 |
+| Total revenue | 20,476,260.45 |
+| Orders | 40,077 |
+| Customers | 5,878 |
+| Products | 4,916 |
+| Countries | 43 |
+
+Visualizations include:
+- Monthly orders.
+- Monthly revenue.
 - Order value distribution.
 - Top countries by revenue.
 - Top customers by revenue.
 - Top products by quantity.
 
+Main outputs:
+- `data/interim/cleaned_transactions.csv`
+- `data/processed/customer_transactions.csv`
+- `reports/cleaning_log.csv`
+- `reports/cleaning_summary.csv`
+- `reports/week1_progress_report.md`
+- `reports/figures/`
+
 ### Week 2 – RFM Analysis and Customer Segmentation
 
 **Status: Completed**
 
-RFM analysis was performed using three customer behaviour metrics:
+RFM analysis was performed using:
 
-- **Recency:** Number of days since the customer's most recent purchase.
-- **Frequency:** Number of distinct invoices/orders.
+- **Recency:** Days since the customer's most recent purchase.
+- **Frequency:** Number of distinct invoices.
 - **Monetary:** Total customer spending.
 
 Log transformation and StandardScaler were applied before K-Means clustering.
 
-K-Means was evaluated for cluster counts from 2 to 8 using inertia and Silhouette Score.
+K-Means was evaluated for cluster counts from 2 to 8.
 
-**Model evaluation:**
+#### Cluster evaluation
 
 | Clusters (k) | Silhouette Score |
 |---:|---:|
@@ -132,9 +141,9 @@ K-Means was evaluated for cluster counts from 2 to 8 using inertia and Silhouett
 | 7 | 0.3034 |
 | 8 | 0.2943 |
 
-Four clusters were selected as a business-oriented solution to provide more actionable customer groups. The two-cluster solution achieved the highest Silhouette Score, so the four-cluster selection represents a trade-off between cluster separation and business usefulness.
+Four clusters were selected as a business-oriented solution. Although k=2 achieved the highest Silhouette Score, k=4 provided four more actionable customer groups.
 
-**Identified customer segments:**
+#### Identified customer segments
 
 | Customer Segment | Customers | Percentage |
 |---|---:|---:|
@@ -144,41 +153,238 @@ Four clusters were selected as a business-oriented solution to provide more acti
 | At-Risk / Hibernating | 1,958 | 33.31% |
 | **Total** | **5,878** | **100%** |
 
-**Marketing recommendations:**
+#### Business recommendations
 
-- Champions: VIP rewards, exclusive offers, and referral campaigns.
-- Loyal High-Value: Personalized win-back campaigns and loyalty reminders.
-- Recent Customers: Second-purchase incentives and product recommendations.
-- At-Risk / Hibernating: Re-engagement campaigns and targeted offers.
+- **Champions:** VIP rewards, exclusive offers, and referral campaigns.
+- **Loyal High-Value:** Personalized loyalty campaigns and engagement reminders.
+- **Recent Customers:** Second-purchase incentives and product recommendations.
+- **At-Risk / Hibernating:** Re-engagement campaigns and targeted offers.
+
+Main outputs:
+- `data/processed/customer_rfm.csv`
+- `data/processed/customer_rfm_scaled.csv`
+- `data/processed/customer_segments.csv`
+- `data/processed/customer_rfm_features.csv`
+- `reports/cluster_evaluation.csv`
+- `reports/customer_segment_profile.csv`
+- `reports/customer_segment_recommendations.csv`
+- `reports/week2_progress_report.md`
 
 ### Week 3 – Customer Churn Prediction
 
-**Status: Planned / In Progress**
+**Status: Completed**
 
-Planned activities:
+A historical customer cohort was prepared to develop a leakage-safe churn prediction model.
 
-- Define a leakage-safe customer churn target.
-- Prepare features for churn prediction.
-- Handle class imbalance where necessary.
-- Train Logistic Regression and Random Forest models.
-- Evaluate models using Precision, Recall, F1-score, and ROC-AUC.
-- Save the selected model and evaluation results.
+#### Churn definition
 
-### Week 4 – Dashboard and Final Documentation
+- Feature window: 180 days.
+- Observation window: 90 days.
+- Historical cohort: 2,724 customers.
+- Churned customers: 1,315.
+- Active customers: 1,409.
+- Inactivity-based churn rate: 48.27%.
 
-**Status: Planned / In Progress**
+A customer was labelled as churned if they made no purchase during the 90-day observation period.
 
-Planned activities:
+This is an inactivity-based proxy, not proof of permanent customer loss.
 
-- Develop a Tableau or Power BI dashboard.
-- Build an executive overview of business KPIs.
-- Visualize customer segments.
-- Present churn risk distribution and customer details.
-- Prepare final technical documentation and project report.
+#### Feature engineering and leakage prevention
 
----
+Six historical features were used:
+- Recency
+- Frequency
+- Monetary
+- Total_Quantity
+- Unique_Products
+- Average_Order_Value
 
-## Repository Structure
+`CustomerID` and `Future_Orders_90d` were excluded from model training to prevent leakage.
+
+#### Models evaluated
+
+1. Logistic Regression
+2. Random Forest
+
+Logistic Regression was selected based on its higher mean cross-validation ROC-AUC score.
+
+#### Selected model performance
+
+| Metric | Test Result |
+|---|---:|
+| Accuracy | 0.6807 |
+| Precision | 0.6529 |
+| Recall | 0.7224 |
+| F1-score | 0.6859 |
+| ROC-AUC | 0.7308 |
+
+The held-out test set contained 545 customers.
+
+#### Prediction workflow
+
+The script `src/predict_customers.py` loads the saved model, validates input features, generates churn probabilities, and assigns illustrative risk categories.
+
+A 10-customer sample scoring workflow was tested. This is a demonstration and not a full-population production scoring output.
+
+Main outputs:
+- `data/processed/historical_churn_dataset.csv`
+- `data/processed/historical_churn_dataset_metadata.json`
+- `models/churn_model.pkl`
+- `models/model_metadata.json`
+- `reports/churn_model_comparison.csv`
+- `reports/churn_model_evaluation.md`
+- `reports/churn_model_validation_report.md`
+- `reports/customer_churn_predictions.csv`
+- `reports/figures/churn_confusion_matrix.png`
+- `reports/figures/churn_roc_curve.png`
+
+### Week 4 – Interactive Dashboard and Final QA
+
+**Status: Completed**
+
+An interactive dashboard was developed using Streamlit and Plotly.
+
+#### Dashboard sections
+
+1. **Executive Overview**
+   - Customer and transaction KPIs.
+   - Revenue and business overview charts.
+
+2. **Customer Segmentation**
+   - Customer segment distribution.
+   - Segment-level metrics and profiles.
+   - Segment filtering.
+
+3. **Churn Analysis**
+   - Historical churn cohort metrics.
+   - Churn rate.
+   - Model evaluation metrics.
+   - Churn-related visualizations.
+
+4. **Customer Details**
+   - Customer ID search.
+   - Customer-level information.
+   - Available sample churn predictions.
+   - CSV download functionality.
+
+#### Run the dashboard
+
+```bash
+streamlit run dashboard/app.py
+```
+
+The dashboard was manually tested for:
+- Executive Overview metrics and charts.
+- Segment filter behaviour.
+- Customer Segmentation charts and profiles.
+- Churn Analysis metrics and charts.
+- Model performance metrics.
+- Customer ID search.
+- CSV download.
+- Missing-file and Python error checks.
+
+**Manual dashboard testing result: 8 passed, 0 failed.**
+
+Main dashboard file: `dashboard/app.py`
+
+## 6. Independent Validation and QA
+
+Independent validation scripts were developed to verify data quality, RFM outputs, clustering, and churn model results.
+
+| Validation | Checks | Passed | Failed |
+|---|---:|---:|---:|
+| Week 1 data validation | 25 | 25 | 0 |
+| Week 2 RFM validation | 47 | 47 | 0 |
+| Week 3 churn model validation | 28 | 28 | 0 |
+| **Automated total** | **100** | **100** | **0** |
+| Week 4 dashboard manual tests | 8 | 8 | 0 |
+
+The 100 automated checks and 8 manual dashboard tests are separate validation activities.
+
+Validation scripts:
+- `src/validate_week1.py`
+- `src/validate_week2.py`
+- `src/validate_churn_model.py`
+
+QA reports:
+- `reports/week1_qa_report.md`
+- `reports/week2_qa_report.md`
+- `reports/week3_qa_report.md`
+- `reports/week4_qa_report.md`
+
+## 7. Installation and Setup
+
+### Clone the repository
+
+```bash
+git clone https://github.com/Pranavsangichetty/Axlero-Group3.git
+cd Axlero-Group3
+```
+
+### Create and activate a virtual environment
+
+macOS/Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Windows:
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+### Install dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+### Dataset setup
+
+Place the Online Retail II dataset in the location expected by the data-loading scripts. The raw dataset may be excluded from Git because of its size and licensing/distribution considerations.
+
+### Run the analysis
+
+```bash
+python src/data_quality_audit.py
+python src/investigate_transactions.py
+python src/clean_data.py
+python src/eda.py
+python src/rfm_analysis.py
+python src/features.py
+python src/churn_dataset.py
+python src/churn_prediction.py
+```
+
+Run the validation scripts:
+
+```bash
+python src/validate_week1.py
+python src/validate_week2.py
+python src/validate_churn_model.py
+```
+
+Run the prediction workflow:
+
+```bash
+python src/predict_customers.py \
+  --input data/processed/sample_customer_scoring_input.csv \
+  --output reports/customer_churn_predictions.csv
+```
+
+Run the dashboard:
+
+```bash
+streamlit run dashboard/app.py
+```
+
+Run only the scripts required for the outputs you want to regenerate. Some later-stage scripts depend on files generated by earlier stages.
+
+## 8. Repository Structure
 
 ```text
 Axlero-Group3/
@@ -187,150 +393,79 @@ Axlero-Group3/
 │   ├── raw/
 │   ├── interim/
 │   └── processed/
-│       ├── customer_transactions.csv
-│       ├── customer_rfm.csv
-│       ├── customer_rfm_scaled.csv
-│       └── customer_segments.csv
+│
+├── models/
+│   ├── churn_model.pkl
+│   └── model_metadata.json
 │
 ├── notebooks/
 │
 ├── src/
 │   ├── dataset.py
-│   ├── features.py
 │   ├── data_quality_audit.py
 │   ├── investigate_transactions.py
 │   ├── clean_data.py
 │   ├── eda.py
-│   └── rfm_analysis.py
-│
-├── models/
+│   ├── rfm_analysis.py
+│   ├── features.py
+│   ├── churn_dataset.py
+│   ├── churn_prediction.py
+│   ├── predict_customers.py
+│   ├── validate_week1.py
+│   ├── validate_week2.py
+│   └── validate_churn_model.py
 │
 ├── dashboard/
+│   └── app.py
 │
 ├── reports/
 │   ├── figures/
 │   ├── week1_progress_report.md
 │   ├── week2_progress_report.md
-│   ├── cluster_evaluation.csv
-│   ├── customer_segment_profile.csv
-│   └── customer_segment_recommendations.csv
+│   ├── week1_qa_report.md
+│   ├── week2_qa_report.md
+│   ├── week3_qa_report.md
+│   ├── week4_qa_report.md
+│   ├── churn_model_evaluation.md
+│   └── customer_segment_profile.csv
 │
 ├── requirements.txt
 ├── .gitignore
 └── README.md
 ```
 
----
+## 9. Limitations and Considerations
 
-## Installation and Setup
+- Customer IDs are missing from a portion of the original transaction dataset.
+- The documented cleaning pipeline removed approximately 5.57% of original records.
+- The initial cancellation audit reported 19,494 cancellation rows, while the cleaning log recorded 19,104 removed cancellation rows. This difference remains to be reconciled.
+- The RFM segmentation uses full-history customer behaviour, whereas churn modelling uses a separate historical snapshot and observation window.
+- The four-cluster solution prioritizes business usefulness rather than the highest Silhouette Score.
+- Churn is defined using a 90-day inactivity proxy and does not establish permanent customer loss.
+- Model performance may change when applied to future customers or different time periods.
+- Only 10 sample customers are included in the current prediction demonstration.
+- Risk category thresholds are illustrative and have not been validated as business decision thresholds.
+- Monetary values are reported in the dataset's recorded price units; currency interpretation should be verified before financial use.
 
-### 1. Clone the repository
+## 10. Future Scope
 
-```bash
-git clone https://github.com/Pranavsangichetty/Axlero-Group3.git
-cd Axlero-Group3
-```
+- Validate churn predictions on newer and independent customer cohorts.
+- Improve model performance and probability calibration.
+- Generate predictions for a larger eligible customer population.
+- Validate business risk thresholds.
+- Add campaign response and customer lifetime value analysis.
+- Improve dashboard interactivity and deployment.
+- Integrate automated data pipelines and scheduled model monitoring.
 
-### 2. Create a virtual environment
-
-```bash
-python3 -m venv .venv
-```
-
-### 3. Activate the environment
-
-For macOS/Linux:
-
-```bash
-source .venv/bin/activate
-```
-
-For Windows:
-
-```bash
-.venv\Scripts\activate
-```
-
-### 4. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 5. Run Week 1 scripts
-
-```bash
-python src/data_quality_audit.py
-python src/investigate_transactions.py
-python src/clean_data.py
-python src/eda.py
-```
-
-### 6. Run Week 2 analysis
-
-```bash
-python src/rfm_analysis.py
-```
-
-Ensure the required dataset is available in the expected `data/` directory before running the scripts.
-
----
-
-## Key Deliverables
-
-| Deliverable | Location |
-|---|---|
-| Data quality analysis | `reports/` |
-| Cleaned transaction data | `data/interim/` |
-| Customer transaction data | `data/processed/` |
-| EDA visualizations | `reports/figures/` |
-| RFM analysis | `src/rfm_analysis.py` |
-| Customer segments | `data/processed/customer_segments.csv` |
-| Cluster evaluation | `reports/cluster_evaluation.csv` |
-| Segment recommendations | `reports/customer_segment_recommendations.csv` |
-| Week 1 report | `reports/week1_progress_report.md` |
-| Week 2 report | `reports/week2_progress_report.md` |
-
----
-
-## Limitations
-
-- Customer IDs are missing in a portion of the original transaction dataset.
-- Approximately 5.57% of original records were removed during the documented cleaning process.
-- RFM segmentation includes 5,878 customers with identifiable customer information.
-- The four-cluster solution is a business-oriented selection rather than the highest Silhouette Score solution.
-- Monetary values use the recorded dataset price units; the currency has not been independently verified.
-- Churn prediction and dashboard development remain future project activities until implemented and validated.
-
----
-
-## Future Scope
-
-- Improve customer segmentation using additional behavioural features.
-- Develop and validate churn prediction models.
-- Identify customers with high churn risk.
-- Build interactive dashboards for business users.
-- Develop personalized retention strategies.
-- Support data-driven marketing decisions.
-
----
-
-## GitHub Repository
+## 11. GitHub Repository
 
 Repository: https://github.com/Pranavsangichetty/Axlero-Group3
 
 Working branch: `Lav-Kumar`
 
----
+## 12. Acknowledgement
 
-## Acknowledgement
+This project was developed as part of the Retail & E-commerce Customer Segmentation and Churn Prediction project with Axlero – Innovating Solutions.
 
-This project is developed as part of the Retail & E-commerce Customer Segmentation and Churn Prediction project with Axlero – Innovating Solutions.
+**Project objective:** Transform retail transaction data into meaningful customer insights and actionable customer retention strategies.
 
-**Project objective:** Transform retail transaction data into meaningful customer insights and actionable business strategies.
-
-<p align="center">
-  <img src="assets/axlero-logo.png"
-       alt="Axlero Logo"
-       width="350"/>
-</p>
