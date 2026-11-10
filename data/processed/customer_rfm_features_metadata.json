@@ -1,0 +1,21 @@
+{
+    "dataset": "customer_rfm_features.csv",
+    "row_count": 5878,
+    "column_count": 6,
+    "unique_customers": 5878,
+    "reference_date": "2011-12-10",
+    "source_files": [
+        "customer_rfm.csv",
+        "customer_segments.csv",
+        "customer_transactions.csv"
+    ],
+    "columns": [
+        "CustomerID",
+        "Recency",
+        "Frequency",
+        "Monetary",
+        "Cluster",
+        "Segment"
+    ],
+    "important_limitation": "This RFM snapshot uses the full available transaction history. It is suitable for descriptive segmentation, but must not be used directly as a historical churn-training snapshot. For churn prediction, recompute features at each historical cutoff and use only transactions available on or before that cutoff."
+}
