@@ -68,7 +68,7 @@ The Power BI `.pbix` remains a separate deliverable. Its documented current stat
 | Compare single-snapshot and multi-snapshot modelling designs | Nivesh, Divya and Raj, with team decision coordinated by Pranav |
 | Independently rerun churn model and reproduce metrics/QA | Nivesh and Raj |
 | Rerun the contributed data-validation notebooks from a clean environment | Divya |
-| Complete Power BI churn page and final dashboard checks | Sirisha |
+| Verify final Power BI scope, including whether a churn page is still required, and complete project-level dashboard QA | Pranav to coordinate with the team; Sirisha's dashboard and RFM submissions are already recorded as merged |
 | Verify the end-to-end clean-clone run and reconcile documentation | Raj and Pranav |
 | Review any refreshed PR and record final acceptance | Pranav |
 
@@ -76,7 +76,15 @@ The Power BI `.pbix` remains a separate deliverable. Its documented current stat
 
 **Team-lead sign-off: pending.** I have completed the documented coordination, review, selective integration and project-status tracking described above. I am not marking the project as fully released or finally signed off yet because the churn design still needs explicit team confirmation, independent clean-run validation remains outstanding, the Power BI churn page and QA are incomplete, and the model ROC-AUC remains below the stated target. Final sign-off should be recorded only after these release gates are resolved or explicitly accepted by the project stakeholders.
 
-## 10. Repository references
+## 10. Sirisha dashboard contribution — additional evidence
+
+After reviewing the dashboard contribution history, I recorded Sirisha's Power BI work as submitted and merged: PR #5 contains the dashboard and dashboard documentation file, and PR #8 contains a subsequent dashboard update with RFM visuals. The dashboard file and `reports/Dashboard_Documentation.docx` are present on `main`. I created a separate evidence dossier on my personal branch to preserve this contribution record and distinguish repository submission from final acceptance.
+
+**Evidence:** [Sirisha dashboard delivery dossier](SIRISHA_DASHBOARD_DELIVERY_DOSSIER_2026-11-11.md) · [PR #5](https://github.com/Pranavsangichetty/Axlero-Group3/pull/5) · [PR #8](https://github.com/Pranavsangichetty/Axlero-Group3/pull/8) · [Dashboard documentation](https://github.com/Pranavsangichetty/Axlero-Group3/blob/main/reports/Dashboard_Documentation.docx)
+
+The Word document's full contents have not yet been independently inspected. Its submission is confirmed, while content-level review remains open. The latest project records also list final dashboard QA and confirmation of the required churn-page scope as project-level release checks; these should not be represented as proof that Sirisha's already merged contribution was not delivered.
+
+## 11. Repository references
 
 - [Repository](https://github.com/Pranavsangichetty/Axlero-Group3)
 - [Personal team-lead branch](https://github.com/Pranavsangichetty/Axlero-Group3/tree/Pranavsangichetty)
