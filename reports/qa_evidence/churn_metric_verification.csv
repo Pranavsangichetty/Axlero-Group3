@@ -1,0 +1,17 @@
+Model,Metric,Committed,Rerun,AbsDiff,Status
+Logistic Regression,CV_ROC_AUC_Mean,0.7638764109106898,0.7638764109106898,0.0,MATCH
+Logistic Regression,Accuracy,0.6807339449541284,0.6807339449541284,0.0,MATCH
+Logistic Regression,Precision,0.6529209621993127,0.6529209621993127,0.0,MATCH
+Logistic Regression,Recall,0.7224334600760456,0.7224334600760456,0.0,MATCH
+Logistic Regression,F1_Score,0.6859205776173285,0.6859205776173285,0.0,MATCH
+Logistic Regression,ROC_AUC,0.7308065690478116,0.7308065690478116,0.0,MATCH
+Logistic Regression,Confusion_Matrix,"[181, 101, 73, 190]","[181, 101, 73, 190]",,MATCH
+Logistic Regression,Best_Parameters,"{""classifier__C"": 0.1, ""classifier__class_weight"": null}","{""classifier__C"": 0.1, ""classifier__class_weight"": null}",,MATCH
+Random Forest,CV_ROC_AUC_Mean,0.7359782052725315,0.7359755761268764,2.629145655186349e-06,CLOSE
+Random Forest,Accuracy,0.6385321100917432,0.636697247706422,0.0018348623853211565,CLOSE
+Random Forest,Precision,0.6071428571428571,0.6058631921824105,0.0012796649604466248,CLOSE
+Random Forest,Recall,0.7110266159695817,0.7072243346007605,0.0038022813688212143,CLOSE
+Random Forest,F1_Score,0.6549912434325744,0.6526315789473685,0.00235966448520597,CLOSE
+Random Forest,ROC_AUC,0.7114850470566028,0.7114715637893374,1.3483267265357313e-05,CLOSE
+Random Forest,Confusion_Matrix,"[161, 121, 76, 187]","[161, 121, 77, 186]",,DIFF
+Random Forest,Best_Parameters,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 12, ""classifier__min_samples_leaf"": 3, ""classifier__n_estimators"": 500}","{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 12, ""classifier__min_samples_leaf"": 3, ""classifier__n_estimators"": 500}",,MATCH
