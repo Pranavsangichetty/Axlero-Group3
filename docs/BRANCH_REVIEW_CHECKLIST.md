@@ -2,24 +2,19 @@
 
 **Maintainer:** Pranav Sangichetty  
 **Stable branch:** `main`  
-**Personal integration branch:** `Pranavsangichetty`
+**Personal integration/worklog branch:** `Pranavsangichetty`
 
 ## Branch map
 
-The repository branch search currently shows:
-- `main`
-- `Pranavsangichetty`
-- `Divya-Akbari`
-- `Lav-Kumar`
-- `Nivesh243`
-- `Sirisha`
-- `raj4089`
+- `main` — shared project baseline.
+- `Pranavsangichetty` — team-lead worklogs, coordination records and review documentation.
+- `Divya-Akbari`, `Lav-Kumar`, `Nivesh243`, `Sirisha`, `raj4089` — member work branches.
 
-A branch existing on GitHub does not by itself prove that it contains current or reviewed work. Check its latest commits and file changes.
+A branch existing on GitHub does not prove that it contains current or reviewed work. Compare its head with the intended base and inspect the actual file diff.
 
 ## Before opening a pull request
 
-- [ ] Pull the latest changes from the intended base branch.
+- [ ] Update the feature branch from the latest intended base.
 - [ ] Confirm the correct personal/feature branch is checked out.
 - [ ] Keep the change focused on one logical task.
 - [ ] Check that no unrelated or generated files are included.
@@ -48,12 +43,23 @@ A branch existing on GitHub does not by itself prove that it contains current or
 3. Request changes when important checks fail or evidence is missing.
 4. Merge only after conflicts are resolved and required checks pass.
 5. After merging, verify the resulting `main` branch and record the PR link.
+6. If a stale PR is closed without merging, record that status accurately; do not describe it as merged.
 
 ## PR review record
 
 | Date | PR | Source branch | Scope | Review decision | Follow-up |
 |---|---|---|---|---|---|
-| YYYY-MM-DD |  |  |  | Pending |  |
+| 2026-11-10 | [#13](https://github.com/Pranavsangichetty/Axlero-Group3/pull/13) | `Lav-Kumar` | Week 3/4 churn, scoring, dashboard and reports | Changes requested; not merged | Closed on 11 Nov 2026 after confirming stale/conflicting branch and selective integration of useful files into main |
+
+## Current release gates
+
+- [ ] Explicit team approval of churn definition and snapshot date.
+- [ ] Controlled comparison of single-snapshot and multi-snapshot designs.
+- [ ] Clean-environment rerun of churn model and independent metric reproduction.
+- [ ] Rerun of contributed data-validation notebooks.
+- [ ] Power BI churn page and final dashboard QA.
+- [ ] End-to-end clean-clone run and final documentation reconciliation.
+- [ ] Final team-lead sign-off after evidence is reviewed.
 
 ## Safety
 
