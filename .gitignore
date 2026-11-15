@@ -1,18 +1,6 @@
-# Raw and cleaned data — do not commit without team approval
 *.csv
-*.xlsx
-*.xls
-
-# Generated model artifacts (commit only if approved)
 *.joblib
 *.pkl
-
-# Notebook checkpoints
 .ipynb_checkpoints/
-
-# Python cache
 __pycache__/
-*.py[cod]
-
-# Environment files
 .env
