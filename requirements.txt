@@ -1,15 +1,6 @@
 pandas
 numpy
-scipy
-scikit-learn
 matplotlib
-seaborn
-jupyter
-ipykernel
-sqlalchemy
-psycopg2-binary
-python-dotenv
+scikit-learn
 joblib
-openpyxl
-streamlit
-plotly
+nbformat
