@@ -1,69 +1,38 @@
-# Churn Modelling and Model Evaluation
+# Machine Learning & Model Development
 
-**Project:** Retail & Ecommerce Customer Segmentation & Churn Prediction  
-**Team:** Axlero Group 3  
-**Contributor:** Nivesh  
-**Assigned responsibility:** Churn Modelling and Model Evaluation
+**Project:** Axlero Group 3 — Online Retail II Customer Segmentation & Churn Prediction  
+**Churn horizon:** 60 days  
+**Feature lookback:** 90 days
 
-## Churn definition
+## Scope
+This workstream develops reusable machine-learning components for the project's customer inactivity-risk prediction task.
 
-The team leader confirmed a **60-day** churn-risk definition:
+## Contents
+- `Machine_Learning_Model_Development.ipynb` — end-to-end feature preparation, candidate model training, validation-based selection, final held-out test evaluation, and artifact generation.
+- `model_training_pipeline.py` — reusable functions for transaction preparation, customer snapshot creation, chronological splitting, and candidate model construction.
+- `model_selection_report_template.md` — report template to complete with actual run outputs.
+- `requirements.txt` — dependencies.
 
-- `1` = the customer makes no purchase during the 60 days after the observation date.
-- `0` = the customer makes at least one purchase during the 60 days after the observation date.
+## Target definition
+`churn_risk = 1` when a customer makes no purchase during the 60 days after the observation date; otherwise `0`. Features use the preceding 90 days. This target is an inactivity-risk proxy, not confirmed permanent churn.
 
-The notebook uses the previous 90 days of transactions to calculate customer features. This is a future inactivity-risk label, not proof of permanent customer cancellation.
+## How to run
+1. Upload `online_retail_II_cleaned.csv` to Google Colab.
+2. Open and run `Machine_Learning_Model_Development.ipynb` from top to bottom.
+3. Review validation model comparison and Random Forest tuning outputs.
+4. Confirm final test metrics are generated from the latest chronological holdout.
+5. Complete the report template using actual outputs.
 
-## Files
+## Model development approach
+Candidate models include Logistic Regression, Random Forest, and Extra Trees, with a Dummy baseline in the notebook. The notebook selects the candidate by validation F1. The final test period is held out from model selection. A small Random Forest parameter experiment is also compared using validation data only.
 
-- `Churn_Modelling_Model_Evaluation_60_Day.ipynb` — modelling, validation-based model selection, held-out test evaluation, charts, and output generation.
-- `churn_model_report_template.md` — fill in after the notebook has run successfully.
-- `requirements.txt` — Python packages used by the notebook.
-- `.gitignore` — prevents accidental commits of datasets and generated model files.
+## Expected outputs after successful execution
+- `ml_validation_model_comparison.csv`
+- `random_forest_tuning_results.csv`
+- `ml_final_test_metrics.csv`
+- `ml_confusion_matrix.png`
+- `ml_feature_importance.csv` and `.png` (when a tree model is selected)
+- `ml_churn_model_artifact.joblib`
+- `ml_model_development_summary.txt`
 
-## Input data
-
-The notebook expects `online_retail_II_cleaned.csv` in its working directory, with these columns:
-
-`Invoice`, `InvoiceDate`, `CustomerID`, `StockCode`, `Quantity`, `Price`
-
-`Revenue` is optional; the notebook calculates it from `Quantity * Price` if absent.
-
-**Do not commit the raw or cleaned customer transaction CSV to this public/shared repository unless the team lead has explicitly approved it.** Upload the dataset to Colab separately when running the notebook.
-
-## How to run in Google Colab
-
-1. Open Google Colab and upload `Churn_Modelling_Model_Evaluation_60_Day.ipynb`.
-2. Upload `online_retail_II_cleaned.csv` to the Colab session.
-3. Run all cells from top to bottom.
-4. Confirm that every cell finishes without errors.
-5. Review the validation comparison and final test metrics.
-6. Complete `churn_model_report_template.md` using the actual generated results.
-7. Download and add the approved output files to this folder before committing.
-
-## Model-selection and evaluation approach
-
-The notebook uses chronological observation dates:
-
-- Earliest 60% of snapshot dates: training
-- Next 20%: validation and model selection
-- Latest 20%: final held-out test
-
-Candidate models: Dummy Classifier, Logistic Regression, and Random Forest. The best model is selected using validation F1. The selected model is refitted on training plus validation data, then evaluated once on the held-out test data.
-
-## Expected generated outputs
-
-After a successful run, the notebook generates:
-
-- `churn_validation_model_comparison.csv`
-- `churn_test_evaluation.csv`
-- `churn_test_predictions.csv`
-- `churn_feature_importance.csv`
-- `churn_model.joblib`
-- `churn_evaluation_summary.txt`
-- `confusion_matrix.png`
-- `roc_curve.png`
-- `precision_recall_curve.png`
-- `churn_feature_importance.png`
-
-Only commit generated results after confirming they exist and contain real outputs. Do not invent or manually estimate evaluation metrics.
+Do not commit raw or cleaned transaction data, customer-level predictions, or generated artifacts unless the team lead approves. Do not report metrics until the notebook has been run successfully.
