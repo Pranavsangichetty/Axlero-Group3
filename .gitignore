@@ -1,30 +1,18 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
+# Raw and cleaned data — do not commit without team approval
+*.csv
+*.xlsx
+*.xls
 
-# Virtual environments
-.venv/
-venv/
-env/
+# Generated model artifacts (commit only if approved)
+*.joblib
+*.pkl
 
-# Jupyter
+# Notebook checkpoints
 .ipynb_checkpoints/
 
-# Mac
-.DS_Store
+# Python cache
+__pycache__/
+*.py[cod]
 
-# Environment variables
+# Environment files
 .env
-
-# Large datasets
-data/raw/*
-!data/raw/.gitkeep
-
-# Temporary files
-*.log
-*.tmp
-
-# Model artifacts
-*.pkl
-*.joblib
